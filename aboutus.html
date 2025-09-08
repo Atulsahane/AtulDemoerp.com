@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - RudhiCore</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="/static/css/Aboutus.css" rel="stylesheet" />
+    <style>
+        /* ==========================================================================
+        GLOBAL STYLES
+        ========================================================================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding-top: 170px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F7F8;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+        NAVIGATION
+        ========================================================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 0 1rem;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.sticky {
+            background: #ffffff !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-brand img {
+            height: 160px;
+            transition: height 0.4s ease;
+        }
+
+        .navbar.sticky .navbar-brand img {
+            height: 130px;
+        }
+
+        .navbar-nav {
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            font-family: 'Jost', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 6px 12px;
+            color: #333 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2e3192 !important;
+        }
+
+        .btn-login {
+            background-color: #2e3192;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #1f236e;
+            color: #ffc107;
+        }
+
+        /* ==========================================================================
+        COMMON SECTION STYLES
+        ========================================================================== */
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2e3192;
+        }
+
+        .section-subtext {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ==========================================================================
+        WHO WE ARE SECTION
+        ========================================================================== */
+
+        .who-we-are-section {
+            background-color: #f5f7f8;
+            padding: 100px 20px;
+        }
+
+        .about-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* ==========================================================================
+        VISION & MISSION CAROUSEL
+        ========================================================================== */
+
+        #vision-mission-carousel .carousel-item {
+            min-height: 90vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .vision-slide {
+            background-image: url('/static/Image/vision.jpg');
+        }
+
+        .mission-slide {
+            background-image: url('/static/Image/mission.jpg');
+        }
+
+        .vision-mission-slide {
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #vision-mission-carousel .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+        }
+
+        .vision-mission-slide .card {
+            background-color: rgba(255, 255, 255, 0.88);
+            color: #2e3192;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .vision-mission-slide .card:hover {
+            background-color: #2e3192;
+            color: #fff;
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .vision-mission-slide .card h3,
+        .vision-mission-slide .card p {
+            transition: color 0.3s ease;
+        }
+
+        .vision-mission-slide .card:hover h3,
+        .vision-mission-slide .card:hover p {
+            color: #ffffff;
+        }
+
+        .vision-mission-slide .card i {
+            font-size: 48px;
+            height: 48px;
+            width: 48px;
+            margin-bottom: 15px;
+            color: #2e3192;
+            transition: transform 0.4s ease, color 0.3s ease;
+        }
+
+        .vision-mission-slide .card:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: #ffc107;
+        }
+
+        /* ==========================================================================
+        CORE VALUES SECTION
+        ========================================================================== */
+
+        .core-values-section {
+            background-color: #f9fafe;
+        }
+
+        .value-card {
+            background-color: #fff;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: #2e3192;
+            background-color: #2e3192;
+            color: #fff;
+        }
+
+        .value-card:hover i,
+        .value-card:hover h5,
+        .value-card:hover .icon-wrapper {
+            color: #ffc107;
+        }
+
+        .icon-wrapper {
+            font-size: 36px;
+            color: #2e3192;
+            transition: color 0.3s ease;
+        }
+
+        .value-card h5 {
+            font-size: 1.25rem;
+            color: #2e3192;
+            transition: color 0.3s ease;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* ==========================================================================
+        OUR JOURNEY SECTION
+        ========================================================================== */
+
+        .journey-section {
+            position: relative;
+            background: url('/static/Image/bg.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .journey-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 50, 0.6);
+            z-index: 0;
+        }
+
+        .journey-section h2 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline-step .year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffc107;
+        }
+
+        .timeline-step h5 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-step p {
+            color: #f1f1f1;
+            font-size: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ==========================================================================
+        TEAM SPOTLIGHT SECTION
+        ========================================================================== */
+
+        .team-spotlight {
+            background: linear-gradient(145deg, #ffffff, #f5f7fb);
+            overflow: hidden;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2e3192;
+            position: relative;
+        }
+
+        .team-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            /* border: 4px solid #2e3192; */
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .team-avatar:hover {
+            transform: scale(1.08);
+        }
+
+        .team-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ==========================================================================
+        SUCCESS STORIES SECTION
+        ========================================================================== */
+
+        #success-stories .carousel-item {
+            transition: transform 1s ease-in-out;
+        }
+
+        #success-stories img:hover {
+            transform: scale(1.05);
+            border: 3px solid #2e3192;
+            transition: 0.4s ease;
+        }
+
+        /* ==========================================================================
+        RESPONSIVE DESIGN - MOBILE
+        ========================================================================== */
+
+        @media (max-width: 768px) {
+
+            /* Navigation */
+            .navbar-brand img {
+                height: 100px;
+            }
+
+            .nav-link {
+                font-size: 16px;
+                padding: 4px 10px;
+            }
+
+            /* Sections */
+            .who-we-are-section {
+                padding: 60px 10px;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtext {
+                font-size: 1rem;
+            }
+
+            .about-image {
+                margin-top: 30px;
+            }
+
+            /* Vision & Mission */
+            .vision-mission-slide .card {
+                padding: 20px;
+            }
+
+            /* Core Values */
+            .value-card {
+                padding: 30px 15px;
+            }
+
+            /* Journey Timeline */
+            .timeline-step {
+                padding-left: 30px;
+            }
+
+            .timeline-step .year {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* offcanvas menu for Mobile views */
+        .offcanvas.offcanvas-end {
+            height: 100vh;
+        }
+
+        .offcanvas-body {
+            overflow-y: auto;
+            max-height: calc(100vh - 56px);
+            /* 56px is approx header height */
+        }
+
+        .offcanvas-body .nav-link {
+            display: block;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+
+        .offcanvas-body .btn-login {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .offcanvas-header {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Fix: Prevent horizontal overflow */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Fix: Carousel Cards Responsive Width */
+        #vision-mission-carousel .carousel-item .card {
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        /* Fix: Ensure carousel items wrap properly on small screens */
+        @media (max-width: 768px) {
+            #vision-mission-carousel .carousel-item .row.g-4 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #vision-mission-carousel .carousel-item .col-md-3 {
+                width: 90% !important;
+                margin-bottom: 20px;
+            }
+
+            .carousel-inner {
+                overflow: hidden;
+            }
+        }
+
+        /* Fix: Make all images responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Optional: Fix padding below last carousel card */
+        .vision-mission-slide .container {
+             padding-bottom: 40px;
+         margin-top: 280px;
+        }
+
+        /* ==============================================
+    FOOTER - OPTIMIZED
+    ============================================== */
+
+        footer.footer {
+            margin-top: auto;
+        }
+
+        footer a.text-light:hover i {
+            color: #ffc107;
+            text-decoration: underline;
+        }
+
+        footer .social-icons a:hover i {
+            color: #ffc107;
+            transform: scale(1.2) translateZ(0);
+            transition: all 0.3s ease;
+        }
+
+            .footer-logo {
+  height: 130px;
+  margin-right: 10px;
+  margin-left: -20px; /* adjust this value */
+}
+
+        /* ==============================================
+    FOOTER MOBILE RESPONSIVE
+    ============================================== */
+
+        @media (max-width: 768px) {
+            footer .col-md-4 {
+                text-align: center;
+            }
+            
+        }
+        html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+/* Prevent Bootstrap rows from overflowing */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Fix AOS animation overflow */
+[data-aos] {
+  overflow: hidden;
+}
+
+/* Fix carousel images */
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+  /* display: block; */
+}
+
+    </style>
+</head>
+
+<body>
+     <!-- Navigation -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="/static/image/logo1.png" alt="RudhiCore ERP Logo">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="d-none d-lg-flex mx-auto">
+        <ul class="navbar-nav flex-row gap-5">
+          <li class="nav-item">
+            <a class="nav-link" href="/">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutus">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blog">BLOG</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactus">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Desktop Login Button -->
+      <div class="btn-login-desktop d-none d-lg-block">
+        <a class="btn btn-login" href="/login">
+          <i class="fas fa-user"></i> LOGIN
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Mobile Offcanvas Menu -->
+      <!-- Mobile Offcanvas Menu -->
+      <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">MENU</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="/">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutus">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">BLOG</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contactus">CONTACT</a>
+            </li>
+          </ul>
+          <div class="mt-3">
+            <a class="btn btn-login" href="/login">
+              <i class="fas fa-user"></i> LOGIN
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+    <!-- Who We Are Section -->
+    <section class="who-we-are-section py-5 bg-light" id="who-we-are">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Content Column -->
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <h2 class="fw-bold mb-4 section-title">Who We Are</h2>
+                    <p class="section-subtext mb-3">
+                        <strong>RudhiCore</strong> is a dynamic and centralized ERP solution crafted for educational
+                        excellence.
+                        Developed by <strong>RudhiSoft</strong>, our mission is to empower institutions with streamlined
+                        workflows,
+                        improved transparency, and data-driven insights.
+                    </p>
+                    <p class="section-subtext">
+                        We help you simplify daily operations and ensure real-time collaboration between administrators,
+                        educators, students, and parents — all within a single smart system.
+                    </p>
+                </div>
+
+                <!-- Image Column -->
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="/static/image/About.svg" alt="Who We Are Illustration" class="about-image img-fluid"
+                        style="max-width: 90%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Carousel -->
+    <section id="vision-mission-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+            <!-- Vision Slide -->
+            <div class="carousel-item active">
+                <div class="vision-mission-slide text-light d-flex align-items-center justify-content-center"
+                    style="background-image: url('/static/image/vision.jpg');">
+                    <div class="overlay">
+                        <div class="container">
+                            <h2 class="text-center fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Our
+                                Vision</h2>
+                            <p class="text-center fs-5 mb-5">
+                                "To empower every educational institution with world-class digital tools that enhance
+                                learning, transparency, and collaboration."
+                            </p>
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/globe--v1.png"
+                                            alt="Global Technology Icon" class="mx-auto">
+                                        <h5 class="mt-3">Global-Class ERP Technology</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/learning.png"
+                                            alt="Learning Tools Icon" class="mx-auto">
+                                        <h5 class="mt-3">Accessible Smart Learning Tools</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/networking-manager.png"
+                                            alt="Transparent Systems Icon" class="mx-auto">
+                                        <h5 class="mt-3">Inclusive & Transparent Systems</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Slide -->
+            <div class="carousel-item">
+                <div class="vision-mission-slide text-light d-flex align-items-center justify-content-center"
+                    style="background-image: url('/static/image/mission.jpg');">
+                    <div class="overlay">
+                        <div class="container">
+                            <h2 class="text-center fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Our
+                                Mission</h2>
+                            <p class="text-center fs-5 mb-5">
+                                "To digitize and simplify every academic and administrative process through intuitive,
+                                role-based ERP tools."
+                            </p>
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/settings.png"
+                                            alt="Automation Icon" class="mx-auto">
+                                        <h5 class="mt-3">Automate Daily Tasks</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/group-foreground-selected.png"
+                                            alt="Role Access Icon" class="mx-auto">
+                                        <h5 class="mt-3">Role-Based Access for All</h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card p-4 h-100">
+                                        <img src="https://img.icons8.com/color/48/000000/report-card.png"
+                                            alt="Reports Icon" class="mx-auto">
+                                        <h5 class="mt-3">Insightful Data & Reports</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#vision-mission-carousel"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#vision-mission-carousel"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="core-values-section py-5" id="core-values">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title" data-aos="fade-up">Our Core Values</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="flip-left">
+                    <div class="value-card text-center p-4 shadow-sm bg-white">
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h5 class="fw-bold">Integrity</h5>
+                        <p>We uphold honesty and transparency in all our operations and decisions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-up">
+                    <div class="value-card text-center p-4 shadow-sm bg-white">
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h5 class="fw-bold">Innovation</h5>
+                        <p>We embrace change and constantly improve through creative ideas and smart technology.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-right">
+                    <div class="value-card text-center p-4 shadow-sm bg-white">
+                        <div class="icon-wrapper mb-3">
+                            <i class="fas fa-handshake-angle"></i>
+                        </div>
+                        <h5 class="fw-bold">Collaboration</h5>
+                        <p>We believe in strong teamwork between educators, institutions, and technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section class="journey-section text-white py-5 position-relative" id="our-journey">
+        <div class="container position-relative z-1">
+            <h2 class="text-center fw-bold display-5 mb-5">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <span class="year">01</span>
+                    <h5>2019 – Ideation</h5>
+                    <p>We started with the vision of simplifying academic operations through technology-driven
+                        solutions.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="year">02</span>
+                    <h5>2020 – Development</h5>
+                    <p>Built foundational ERP modules for institutions with a focus on modularity and security.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="year">03</span>
+                    <h5>2021 – First Launch</h5>
+                    <p>Deployed our first ERP version across selected pilot institutions and gathered real-time
+                        feedback.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="year">04</span>
+                    <h5>2023 – Innovation</h5>
+                    <p>Introduced AI tools, dashboards, mobile responsiveness, and integrated analytics.</p>
+                </div>
+                <div class="timeline-step">
+                    <span class="year">05</span>
+                    <h5>2025 – Recognition</h5>
+                    <p>Now trusted by 100+ institutions, we continue shaping the future of education technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-spotlight py-5" id="team-section">
+        <div class="container">
+            <h2 class="text-center mb-5 section-heading">✨ Meet Our Visionaries</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-2 text-center team-float" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/static/image/ms.jpg" alt="Team Member" class="team-avatar">
+                    <h5 class="mt-3">MSD</h5>
+                    <p class="text-muted small">Founder & CEO</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center team-float" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/static/image/virat.jpg" alt="Team Member" class="team-avatar">
+                    <h5 class="mt-3">Virat Kohli</h5>
+                    <p class="text-muted small">Director</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center team-float" data-aos="fade-up" data-aos-delay="300">
+                    <img src="/static/image/rohit.jpg" alt="Team Member" class="team-avatar">
+                    <h5 class="mt-3">Rohit S</h5>
+                    <p class="text-muted small">Team Lead</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center team-float" data-aos="fade-up" data-aos-delay="400">
+                    <img src="/static/image/a.jpg" alt="Team Member" class="team-avatar">
+                    <h5 class="mt-3">Ravindra Jadeja</h5>
+                    <p class="text-muted small">Developer</p>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 text-center team-float" data-aos="fade-up" data-aos-delay="500">
+                    <img src="/static/image/hod.jpg" alt="Team Member" class="team-avatar">
+                    <h5 class="mt-3">Hardik Pandya</h5>
+                    <p class="text-muted small">QA Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="success-stories" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: #2e3192;" data-aos="fade-up">🌟 Success Stories</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <!-- Testimonial 1 -->
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center" data-aos="zoom-in">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                                    class="rounded-circle mb-4 shadow" width="100" height="100"
+                                    alt="Mrs. Asha Kulkarni">
+                                <p class="fs-5 fst-italic">
+                                    "Our school workflow has completely transformed. Managing attendance, timetables,
+                                    and notices is now faster and more efficient than ever."
+                                </p>
+                                <h5 class="fw-bold" style="color: #2e3192;">
+                                    <i class="fas fa-user-tie me-2"></i>Mrs. Asha Kulkarni
+                                </h5>
+                                <p class="text-muted">Vice Principal, Green Valley School</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center" data-aos="zoom-in">
+                                <img src="https://randomuser.me/api/portraits/men/36.jpg"
+                                    class="rounded-circle mb-4 shadow" width="100" height="100" alt="Mr. Rajeev Tiwari">
+                                <p class="fs-5 fst-italic">
+                                    "With ERP, I can manage book inventory, student records, and overdue alerts with
+                                    ease.
+                                    It has made my daily work smooth and paperless."
+                                </p>
+                                <h5 class="fw-bold" style="color: #2e3192;">
+                                    <i class="fas fa-book-reader me-2"></i>Mr. Rajeev Tiwari
+                                </h5>
+                                <p class="text-muted">Library Incharge, Sunrise Public School</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 text-center" data-aos="zoom-in">
+                                <img src="https://randomuser.me/api/portraits/women/50.jpg"
+                                    class="rounded-circle mb-4 shadow" width="100" height="100" alt="Ms. Shalini Mehra">
+                                <p class="fs-5 fst-italic">
+                                    "Admissions and student registration have never been easier. Everything is organized
+                                    in one place with real-time status updates."
+                                </p>
+                                <h5 class="fw-bold" style="color: #2e3192;">
+                                    <i class="fas fa-user-graduate me-2"></i>Ms. Shalini Mehra
+                                </h5>
+                                <p class="text-muted">Coordinator, St. Xavier's School</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer text-light pt-5 pb-4" style="background-color: #2e3192;" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- Company Information -->
+                <div class="col-md-4 mb-4" data-aos="fade-right">
+                    <div class="align-items-center mb-3">
+                      <img src="/static/image/logo2.png" alt="RudhiCore Logo" class="footer-logo">
+                        <h5 class="fw-bold mb-0 text-white">RudhiCore</h5>
+                    </div>
+                    <p>
+                        Empowering institutions with centralized, role-based ERP to streamline academic
+                        and administrative workflows.
+                    </p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-light me-3" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-light me-3" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/Rudhisoft Private Limited" class="text-light me-3"
+                            target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/rudhisoftpvtltd" class="text-light" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="homesample.html" class="text-light text-decoration-none d-block py-1">Home</a></li>
+                        <li><a href="#who-we-are" class="text-light text-decoration-none d-block py-1">Who We Are</a>
+                        </li>
+                        <li><a href="#vision-mission-carousel"
+                                class="text-light text-decoration-none d-block py-1">Vision & Mission</a></li>
+                        <li><a href="#core-values" class="text-light text-decoration-none d-block py-1">Core Values</a>
+                        </li>
+                        <li><a href="#our-journey" class="text-light text-decoration-none d-block py-1">Our Journey</a>
+                        </li>
+                        <li><a href="#team-section" class="text-light text-decoration-none d-block py-1">Meet Our
+                                Team</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-md-4 mb-4" data-aos="fade-left">
+                    <!-- Google Maps Link -->
+                    <p>
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <a href="https://www.google.com/maps/place/Rudhisoft+Private+Limited/@20.0089057,73.7284546,6932m/data=!3m1!1e3!4m10!1m2!2m1!1s:+13,+Maruti+Plaza,+Vidya+Vikas+Circle,+Gangapur+Rd,+Nashik,+Maharashtra+422005!3m6!1s0x3bddebe593b45277:0x78a8e1b3f866db1f!8m2!3d20.0089057!4d73.7665634!15sCk86IDEzLCBNYXJ1dGkgUGxhemEsIFZpZHlhIFZpa2FzIENpcmNsZSwgR2FuZ2FwdXIgUmQsIE5hc2hpaywgTWFoYXJhc2h0cmEgNDIyMDA1WkoiSDEzIG1hcnV0aSBwbGF6YSB2aWR5YSB2aWthcyBjaXJjbGUgZ2FuZ2FwdXIgcmQgbmFzaGlrIG1haGFyYXNodHJhIDQyMjAwNZIBEHNvZnR3YXJlX2NvbXBhbnmqAXkQASoGIgIxMygAMh8QASIb1htzr8O6r-b-If0k1mkBf5aqUq9t-PylYsTGMkwQAiJIMTMgbWFydXRpIHBsYXphIHZpZHlhIHZpa2FzIGNpcmNsZSBnYW5nYXB1ciByZCBuYXNoaWsgbWFoYXJhc2h0cmEgNDIyMDA14AEA!16s%2Fg%2F11x83zdx67?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank" style="text-decoration: none; color: inherit;">
+                            vidya vikas Circle ,maruti plazza shop no 13
+                        </a>
+                    </p>
+
+                    <!-- Mailto Link -->
+                    <p>
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@rudhicore.com" target="_blank"
+                            style="text-decoration: none; color: inherit;">
+                            support@rudhicore.com
+                        </a>
+                    </p>
+                    <!-- Telephone Link -->
+                    <p>
+                        <i class="fas fa-phone me-2"></i>
+                        <a href="tel:+910000000000" style="text-decoration: none; color: inherit;">
+                            +91 00000 000000
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center border-top pt-3 mt-4">
+            <small>&copy; 2025 RudhiCore. All rights reserved.</small>
+        </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Sticky Navbar on Scroll
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('mainNavbar');
+            navbar.classList.toggle('sticky', window.scrollY > 20);
+        });
+    </script>
+</body>
+
+</html>

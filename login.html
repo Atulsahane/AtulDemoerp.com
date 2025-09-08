@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - RudhiCore</title>
+
+  <!-- Bootstrap & Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- External Custom CSS -->
+<link rel="stylesheet" href="static/css/login.css">
+<style>
+  /* Base Styles */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6fb;
+    margin: 0;
+  }
+
+  /* Top Navigation Bar */
+  .top-bar {
+    background-color: #2e3192;
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .top-bar a {
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .top-bar a:hover {
+    text-decoration: underline;
+  }
+
+  /* Main Wrapper with Background Image */
+  .login-wrapper {
+    min-height: 100vh;
+    background: url('/static/image/login.jpg') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15px;
+  }
+
+  /* Left Side SVG or Illustration */
+  .bg-opacity-img {
+    /* opacity: 0.4; */
+    max-height: 500px;
+    transition: transform 0.3s ease;
+  }
+
+  .bg-opacity-img:hover {
+    transform: scale(1.02);
+  }
+
+  /* Login Card Styling */
+  .login-card {
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Circle Icon Above Card */
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #2e3192;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Login Button */
+  .login-btn {
+    background-color: #2e3192;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s ease;
+    border-radius: 8px;
+  }
+
+  .login-btn:hover {
+    background-color: #1f236e;
+    color:#ffc107;
+  }
+
+  /* Input Placeholder Styling */
+  input::placeholder {
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 991px) {
+    .login-wrapper {
+      padding: 40px 15px;
+    }
+
+    .bg-opacity-img {
+      display: none;
+    }
+
+    .login-card {
+      margin-top: 20px;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+
+  <!-- Top Navigation Bar -->
+<div class="top-bar">
+  <a href="/"><i class="fas fa-arrow-left me-2"></i>Back to Home</a>
+</div>
+
+  <!-- Login Section -->
+  <div class="login-wrapper">
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-5">
+
+        <!-- Left Image -->
+        <div class="col-lg-6 text-center d-none d-lg-block">
+          <img src="static/Image/Computer login-rafiki.svg" alt="Login Illustration"
+            class="img-fluid rounded shadow bg-opacity-img">
+        </div>
+
+        <!-- Login Form -->
+        <div class="col-lg-6">
+          <div class="login-card shadow p-5 rounded-4 position-relative">
+            <div class="icon-circle">
+              <i class="fas fa-user-circle fa-3x text-white"></i>
+            </div>
+            <h4 class="text-center mb-4 fw-bold" style="color: #2e3192;">Login to <span class="text-warning">Your
+                Account</span></h4>
+
+            <form id="loginForm">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="fas fa-envelope text-muted"></i></span>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com"
+                    required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="fas fa-lock text-muted"></i></span>
+                  <input type="password" id="password" name="password" class="form-control" placeholder="••••••"
+                    required>
+                  <span class="input-group-text bg-light" onclick="togglePassword()">
+                    <i class="fas fa-eye" id="toggleIcon"></i>
+                  </span>
+                </div>
+              </div>
+
+
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <input type="checkbox" id="remember" class="form-check-input me-1">
+                  <label for="remember" class="form-check-label small">Remember me</label>
+                </div>
+                <button type="button" id="forgotPasswordBtn" class="btn btn-sm text-warning p-0">Forgot
+                  Password?</button>
+              </div>
+
+              <button type="submit" class="btn w-100 login-btn">Login</button>
+            </form>
+
+            <div id="message" class="mt-3 text-center"></div>
+            <div class="text-center mt-3">
+  
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+  const loginForm = document.getElementById('loginForm');
+  const messageDiv = document.getElementById('message');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    messageDiv.textContent = '';
+
+    const email = loginForm.email.value.trim();
+    const password = loginForm.password.value;
+
+    try {
+      const response = await fetch('/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        window.location.href = '/VerifyOtp';
+      } else {
+        messageDiv.textContent = result.message || 'Login failed.';
+      }
+    } catch (err) {
+      messageDiv.textContent = 'Error connecting to server.';
+    }
+  });
+
+  forgotPasswordBtn.addEventListener('click', () => {
+    window.location.href = '/forgotpassword';
+  });
+
+  function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.remove('fa-eye');
+      toggleIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.remove('fa-eye-slash');
+      toggleIcon.classList.add('fa-eye');
+    }
+  }
+</script>
+
+</body>
+</html>
