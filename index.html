@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>RudhiCore - Smart Campus Management ERP</title>
+
+  <!-- External Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link href="/static/css/Landingpage.css" rel="stylesheet">
+  <style>
+    /* ==============================================
+        BASE STYLES & GENERAL LAYOUT - OPTIMIZED
+        ============================================== */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F7F8;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-top: 160px;
+      /* Added to account for fixed navbar height */
+    }
+
+    /* ==============================================
+        NAVIGATION - OPTIMIZED
+        ============================================== */
+
+    .navbar {
+      transition: all 0.4s ease;
+      padding: 0 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+      background: transparent;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+      will-change: background-color, box-shadow;
+    }
+
+    .navbar.sticky {
+      background: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar.sticky~main {
+      padding-top: 30px;
+      /* Added to adjust for sticky navbar */
+    }
+
+    .navbar-brand img {
+      height: 160px;
+      transition: height 0.4s ease;
+      /* Optimize image rendering */
+      image-rendering: optimizeSpeed;
+    }
+
+    .navbar.sticky .navbar-brand img {
+      height: 130px;
+    }
+
+    .nav-link {
+      font-family: "Jost", sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 6px 12px;
+      color: #333 !important;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #2e3192 !important;
+    }
+
+    .navbar-nav {
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-nav.flex-row {
+        gap: 100px;
+      }
+    }
+
+    .btn-login {
+      background-color: #2e3192;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s ease;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .btn-login:hover {
+      background-color: #1f236e;
+      color: #ffc107;
+    }
+
+    /* ==============================================
+        MAIN CONTENT AREA
+        ============================================== */
+    main {
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      body {
+        padding-top: 130px;
+        /* Reduced padding for mobile */
+      }
+
+      .navbar.sticky~main {
+        padding-top: 20px;
+        /* Smaller adjustment for sticky on mobile */
+      }
+    }
+
+    /* ==============================================
+        HERO SECTION - OPTIMIZED
+        ============================================== */
+
+    #hero-section {
+      position: relative;
+      height: 100vh;
+      background-color: #f5f7f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 90px;
+      /* Performance optimization */
+      contain: layout style paint;
+    }
+
+    .diagonal-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .diagonal-bg svg {
+      height: 100%;
+      width: 100%;
+      transform: scaleX(-1) translateZ(0);
+    }
+
+    .background-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      /* Performance optimization */
+      contain: layout;
+    }
+
+    .background-decor img {
+      position: absolute;
+      width: 100px;
+      opacity: 0.12;
+      /* Hardware acceleration for all animated elements */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* OPTIMIZED: Reduced animations - only animate 3 elements instead of 5 */
+    @keyframes zoom {
+      0% {
+        transform: scale(1) translateZ(0);
+      }
+
+      50% {
+        transform: scale(1.15) translateZ(0);
+      }
+
+      100% {
+        transform: scale(1) translateZ(0);
+      }
+    }
+
+    .img1 {
+      top: 5%;
+      left: 5%;
+      animation: zoom 6s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    .img2 {
+      top: 20%;
+      right: 10%;
+      /* Remove animation for performance */
+    }
+
+    .img3 {
+      bottom: 10%;
+      left: 8%;
+      animation: zoom 6s ease-in-out infinite;
+      animation-delay: 0.6s;
+    }
+
+    .img4 {
+      bottom: 15%;
+      right: 5%;
+      /* Remove animation for performance */
+    }
+
+    .img5 {
+      top: 40%;
+      left: 45%;
+      animation: zoom 6s ease-in-out infinite;
+      animation-delay: 1.2s;
+    }
+
+    .student-image {
+      width: 360px;
+      height: 360px;
+      border: 10px solid #7c3aed;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease;
+      overflow: hidden;
+      border-radius: 50%;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .student-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      /* Optimize image rendering */
+      image-rendering: optimizeQuality;
+    }
+
+    .hero-subtext {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+      cursor: default;
+    }
+
+    .hero-subtext:hover {
+      color: #2e3192 !important;
+    }
+
+    /* ==============================================
+        BENEFITS SECTION - MAJOR OPTIMIZATION
+        ============================================== */
+
+    .benefits-section {
+      background-image: url('/static/image/Homebg.jpg');
+      background-size: cover;
+      background-position: center;
+      /* CRITICAL FIX: Remove background-attachment: fixed */
+      background-attachment: scroll;
+      position: relative;
+      padding: 80px 20px;
+      z-index: 1;
+      /* Performance optimization */
+      contain: layout style;
+    }
+
+    .benefits-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .benefits-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .benefits-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 60px;
+      color: #ffffff;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.9);
+      /* OPTIMIZED: Reduced backdrop-filter blur */
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      /* OPTIMIZED: Use transform instead of heavy box-shadow */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      /* CRITICAL: Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .benefit-card::before {
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      background: linear-gradient(135deg, rgba(46, 49, 146, 0.1), rgba(255, 255, 255, 0));
+      top: -20%;
+      left: -20%;
+      transform: rotate(15deg) translateZ(0);
+      transition: all 0.5s ease;
+      z-index: 0;
+    }
+
+    .benefit-card:hover {
+      /* OPTIMIZED: Use transform instead of box-shadow change */
+      transform: translateY(-10px) translateZ(0);
+    }
+
+    .benefit-card i.icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .benefit-card:hover i.icon {
+      transform: scale(1.2) rotate(5deg) translateZ(0);
+    }
+
+    .benefit-card h5 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2e3192;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      color: #333;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==============================================
+        ROLE MODULES SECTION - OPTIMIZED
+        ============================================== */
+
+    .role-modules-section {
+      background-color: #f5f5ff;
+      /* Performance optimization */
+      contain: layout style;
+    }
+
+    .role-modules-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 60px;
+      color: #2e3192;
+    }
+
+    .role-card {
+      background: #f9f9fb;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+      height: 100%;
+      cursor: default;
+      /* CRITICAL: Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .role-card:hover {
+      transform: translateY(-8px) translateZ(0);
+    }
+
+    .role-card i.icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .role-card:hover i.icon {
+      transform: scale(1.2) rotate(4deg) translateZ(0);
+    }
+
+    .role-card h5 {
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #2e3192;
+    }
+
+    .role-card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* ==============================================
+        CORE FEATURES SECTION - OPTIMIZED
+        ============================================== */
+
+    .core-features-section {
+      position: relative;
+      background-color: #eef1f6;
+      padding: 100px 20px;
+      overflow: hidden;
+      z-index: 1;
+      /* Performance optimization */
+      contain: layout style;
+    }
+
+    .core-features-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #2e3192;
+      margin-bottom: 60px;
+    }
+
+    .features-bg-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      /* Performance optimization */
+      contain: layout;
+    }
+
+    .features-bg-decor .blob {
+      position: absolute;
+      opacity: 0.08;
+      z-index: 0;
+      width: 300px;
+      height: auto;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .features-bg-decor .top-right {
+      top: -50px;
+      right: -50px;
+    }
+
+    .features-bg-decor .bottom-left {
+      bottom: -50px;
+      left: -50px;
+    }
+
+    /* Timeline Styles - OPTIMIZED */
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: #2e3192;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateZ(0);
+    }
+
+    .timeline-item {
+      padding: 30px 20px;
+      position: relative;
+      width: 50%;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .timeline-item .content {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 2;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .timeline-item.left {
+      left: 0;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #2e3192;
+      border: 4px solid white;
+      z-index: 3;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .timeline-item.left::before {
+      right: -13px;
+    }
+
+    .timeline-item.right::before {
+      left: -13px;
+    }
+
+    .timeline-item .icon {
+      font-size: 30px;
+      color: #2e3192;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item h4 {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ==============================================
+        DASHBOARD TABS - OPTIMIZED
+        ============================================== */
+
+    .dashboard-tabs .nav-link {
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-weight: 600;
+      background-color: #e0e7ff;
+      color: #2e3192;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .dashboard-tabs .nav-link.active {
+      background-color: #2e3192;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .floating-box {
+      animation: float 3s ease-in-out infinite;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateZ(0);
+      }
+
+      50% {
+        transform: translateY(-10px) translateZ(0);
+      }
+    }
+
+    /* ==============================================
+        REPORTS SECTION - OPTIMIZED
+        ============================================== */
+
+    .reports-section {
+      background-color: #fff;
+      padding: 100px 20px;
+      position: relative;
+      z-index: 1;
+      /* Performance optimization */
+      contain: layout style;
+    }
+
+    .reports-section .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #2e3192;
+      margin-bottom: 10px;
+    }
+
+    .reports-section .section-subtext {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      color: #555;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .report-card {
+      background: #f8f9fb;
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      /* CRITICAL: Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .report-card:hover {
+      transform: translateY(-8px) translateZ(0);
+    }
+
+    .report-card img {
+      height: 80px;
+      margin-bottom: 20px;
+      /* Optimize image rendering */
+      image-rendering: optimizeQuality;
+    }
+
+    .report-card h5 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2e3192;
+      margin-bottom: 10px;
+    }
+
+    .report-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .reports-cta {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .btn-report-demo {
+      display: inline-block;
+      background-color: #2e3192;
+      color: white;
+      padding: 12px 26px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .btn-report-demo:hover {
+      background-color: #1f236e;
+    }
+
+    /* ==============================================
+        NOTIFICATIONS SECTION - OPTIMIZED
+        ============================================== */
+
+    .notifications-section {
+      background: linear-gradient(135deg, #f5f7fa, #e2e6f0);
+      padding: 100px 20px;
+      position: relative;
+      overflow: hidden;
+      /* Performance optimization */
+      contain: layout style;
+    }
+
+    .notifications-section .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #2e3192;
+      margin-bottom: 10px;
+    }
+
+    .notifications-section .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 60px;
+    }
+
+    .notification-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .notification-card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.4s ease;
+      position: relative;
+      /* CRITICAL: Hardware acceleration */
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .notification-card:hover {
+      transform: translateY(-10px) translateZ(0);
+    }
+
+    .icon-wrapper {
+      background: #2e3192;
+      color: #fff;
+      font-size: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      /* Hardware acceleration */
+      transform: translateZ(0);
+    }
+
+    .notification-card h5 {
+      font-size: 1.2rem;
+      color: #2e3192;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .notification-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ==============================================
+        SUCCESS STORIES - OPTIMIZED
+        ============================================== */
+
+    #success-stories .carousel-item {
+      transition: transform 1s ease-in-out;
+    }
+
+    #success-stories img:hover {
+      transform: scale(1.05);
+      border: 3px solid #2e3192;
+      transition: 0.4s ease;
+    }
+
+    /* ==============================================
+        FOOTER - OPTIMIZED
+        ============================================== */
+
+    footer.footer {
+      margin-top: auto;
+    }
+
+    footer a.text-light:hover i {
+      color: #ffc107;
+      text-decoration: underline;
+    }
+
+    footer .social-icons a:hover i {
+      color: #ffc107;
+      transform: scale(1.2) translateZ(0);
+      transition: all 0.3s ease;
+    }
+
+    /* ==============================================
+        RESPONSIVE MEDIA QUERIES - OPTIMIZED
+        ============================================== */
+
+    @media (max-width: 991.98px) {
+      .btn-login-desktop {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .student-image {
+        width: 460px;
+        height: 460px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .student-image {
+        width: 520px;
+        height: 520px;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Navigation */
+      .navbar-brand img {
+        height: 100px;
+      }
+
+      .nav-link {
+        font-size: 16px;
+        padding: 4px 10px;
+      }
+
+      /* Hero Section */
+      h1.fw-bold {
+        font-size: 2.5rem !important;
+      }
+
+      .hero-subtext {
+        font-size: 14px;
+      }
+
+      #hero-section .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .student-image {
+        width: 280px;
+        height: 280px;
+        margin-top: 2rem;
+      }
+
+      .background-decor img {
+        width: 60px;
+        opacity: 0.07;
+      }
+
+      .diagonal-bg svg {
+        height: 60%;
+      }
+
+      /* Sections */
+      .benefits-section {
+        padding: 60px 10px;
+      }
+
+      .benefits-section .section-title {
+        font-size: 2rem;
+      }
+
+      .benefit-card {
+        padding: 25px 15px;
+      }
+
+      .reports-section .section-title {
+        font-size: 2rem;
+      }
+
+      .report-card {
+        padding: 25px 15px;
+      }
+
+      footer .col-md-4 {
+        text-align: center;
+      }
+
+      /* Timeline */
+      .timeline::after {
+        left: 8px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 10px;
+        margin-bottom: 40px;
+      }
+
+      .timeline-item.right {
+        left: 0;
+      }
+
+      .timeline-item.left::before,
+      .timeline-item.right::before {
+        left: 0;
+      }
+    }
+
+    /* ==============================================
+        ADDITIONAL PERFORMANCE OPTIMIZATIONS
+        ============================================== */
+
+    /* Force hardware acceleration for all interactive elements */
+    .benefit-card,
+    .role-card,
+    .report-card,
+    .notification-card,
+    .timeline-item .content,
+    .btn-login,
+    .btn-report-demo {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    /* Optimize font rendering */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Optimize image rendering globally */
+    img {
+      image-rendering: optimizeQuality;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    /* offcanvas menu for Mobile views */
+    .offcanvas.offcanvas-end {
+      height: 100vh;
+    }
+
+    .offcanvas-body {
+      overflow-y: auto;
+      max-height: calc(100vh - 56px);
+      /* 56px is approx header height */
+    }
+
+    .offcanvas-body .nav-link {
+      display: block;
+      padding: 10px 0;
+      font-weight: 500;
+    }
+
+    .offcanvas-body .btn-login {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .offcanvas-header {
+      border-bottom: 1px solid #ddd;
+    }
+    .footer-logo {
+  height: 130px;
+  margin-right: 10px;
+  margin-left: -20px; /* adjust this value */
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav id="mainNavbar" class="navbar navbar-expand-lg">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="/static/image/logo1.png" alt="RudhiCore ERP Logo">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="d-none d-lg-flex mx-auto">
+        <ul class="navbar-nav flex-row gap-5">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Blog.html">BLOG</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactus.html">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Desktop Login Button -->
+      <div class="btn-login-desktop d-none d-lg-block">
+        <a class="btn btn-login" href="login.html">
+          <i class="fas fa-user"></i> LOGIN
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="navbar-toggler ms-auto d-lg-none" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Mobile Offcanvas Menu -->
+      <!-- Mobile Offcanvas Menu -->
+      <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">MENU</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutus.html">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Blog.html">BLOG</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactus.html">CONTACT</a>
+            </li>
+          </ul>
+          <div class="mt-3">
+            <a class="btn btn-login" href="login.html">
+              <i class="fas fa-user"></i> LOGIN
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero-section">
+    <!-- Background Elements -->
+    <div class="diagonal-bg">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#2e3192" fill-opacity="0.06"
+          d="M0,64L30,69.3C60,75,120,85,180,106.7C240,128,300,160,360,176C420,192,480,192,540,192C600,192,660,192,720,202.7C780,213,840,235,900,240C960,245,1020,235,1080,208C1140,181,1200,139,1260,106.7C1320,75,1380,53,1410,42.7L1440,32L1440,320L0,320Z">
+        </path>
+      </svg>
+    </div>
+
+    <div class="background-decor">
+      <img src="/static/image/9.svg" class="img1" alt="Background decoration">
+      <img src="/static/image/7.svg" class="img2" alt="Background decoration">
+      <img src="/static/image/3.svg" class="img3" alt="Background decoration">
+      <img src="/static/image/hexagon-nodes-solid.svg" class="img4" alt="Background decoration">
+      <img src="/static/image/1.svg" class="img5" alt="Background decoration">
+    </div>
+
+    <!-- Hero Content -->
+    <div
+      class="container position-relative z-2 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+      <div class="text-md-start text-center">
+        <h1 class="fw-bold" style="font-family: 'Playfair Display', serif; font-size: 4rem; color: #000000;">
+          RudhiCore
+        </h1>
+        <p class="hero-subtext text-muted mb-1">The Core of Smarter Campus Management</p>
+        <p class="hero-subtext text-secondary">by RudhiSoft</p>
+      </div>
+      <div class="student-image mt-4 mt-md-0 ms-md-5">
+        <img src="/static/image/stdimage.jpg" alt="Student illustration">
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits-section" class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Why Choose Our ERP?</h2>
+      <div class="benefits-grid">
+        <!-- Benefit Cards -->
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-file-alt icon text-primary"></i>
+          <h5>Reduce Paperwork</h5>
+          <p>Minimize manual entries with efficient digital workflows.</p>
+        </div>
+
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-cogs icon text-success"></i>
+          <h5>Improve Workflow</h5>
+          <p>Streamline academic and administrative tasks effortlessly.</p>
+        </div>
+
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-chart-line icon text-warning"></i>
+          <h5>Real-time Insights</h5>
+          <p>Get live reports on attendance, performance, and more.</p>
+        </div>
+
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="400">
+          <i class="fas fa-user-shield icon text-danger"></i>
+          <h5>Role-Based Access</h5>
+          <p>Securely manage access for admins, teachers, and parents.</p>
+        </div>
+
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="500">
+          <i class="fas fa-database icon text-info"></i>
+          <h5>Centralized Data</h5>
+          <p>Keep all your school data in one powerful system.</p>
+        </div>
+
+        <div class="benefit-card" data-aos="zoom-in" data-aos-delay="600">
+          <i class="fas fa-plug icon text-secondary"></i>
+          <h5>Easy Integration</h5>
+          <p>Integrates with your existing systems and workflow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Role-Based Modules Section -->
+  <section id="role-modules" class="role-modules-section py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-5">Tailored Modules for Every Role</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Role Cards -->
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="role-card text-center">
+            <i class="fas fa-user-cog icon text-primary"></i>
+            <h5>Admin</h5>
+            <p>Manage users, settings, reports, and school-wide operations.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="role-card text-center">
+            <i class="fas fa-chalkboard-teacher icon text-success"></i>
+            <h5>Teacher</h5>
+            <p>Take attendance, assign homework, and update student progress.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="role-card text-center">
+            <i class="fas fa-user-graduate icon text-warning"></i>
+            <h5>Student</h5>
+            <p>Access timetable, grades, assignments, and announcements.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="role-card text-center">
+            <i class="fas fa-users icon text-danger"></i>
+            <h5>Parent</h5>
+            <p>Monitor student performance, attendance, and fee payments.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+          <div class="role-card text-center">
+            <i class="fas fa-file-invoice-dollar icon text-info"></i>
+            <h5>Accountant</h5>
+            <p>Manage billing, salary disbursement, and financial reports.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+          <div class="role-card text-center">
+            <i class="fas fa-book icon text-secondary"></i>
+            <h5>Librarian</h5>
+            <p>Track issued books, manage inventory, and overdue returns.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="700">
+          <div class="role-card text-center">
+            <i class="fas fa-bus-alt icon text-dark"></i>
+            <h5>Transport</h5>
+            <p>Schedule routes, assign drivers, and track vehicle logs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features Section -->
+  <section id="core-features" class="core-features-section">
+    <!-- Background Decorations -->
+    <div class="features-bg-decor">
+      <img src="/static/image/blob (1).svg" class="blob top-right" alt="Decorative shape">
+      <img src="/static/image/blob.svg" class="blob bottom-left" alt="Decorative shape">
+    </div>
+
+    <div class="container">
+      <h2 class="section-title">Core Features</h2>
+      <div class="timeline">
+        <!-- Timeline Items -->
+        <div class="timeline-item left" data-aos="fade-right">
+          <div class="content">
+            <i class="fas fa-calendar-check icon"></i>
+            <h4>Attendance Tracking</h4>
+            <p>Track student and staff attendance with ease, and generate daily or monthly reports.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-aos="fade-left">
+          <div class="content">
+            <i class="fas fa-book icon"></i>
+            <h4>Gradebook & Marks</h4>
+            <p>Manage exam results and generate report cards instantly, accessible by students and parents.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-aos="fade-right">
+          <div class="content">
+            <i class="fas fa-user-plus icon"></i>
+            <h4>Online Admissions</h4>
+            <p>Simplify the enrollment process with digital forms, document uploads, and approval flow.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-aos="fade-left">
+          <div class="content">
+            <i class="fas fa-clock icon"></i>
+            <h4>Timetable Scheduling</h4>
+            <p>Automatically generate conflict-free timetables for classes, teachers, and rooms.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-aos="fade-right">
+          <div class="content">
+            <i class="fas fa-comments icon"></i>
+            <h4>CommTools</h4>
+            <p>Send SMS, emails, and portal announcements to staff, students, and parents.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-aos="fade-left">
+          <div class="content">
+            <i class="fas fa-robot icon"></i>
+            <h4>AI Integration</h4>
+            <p>Leverage AI for smart insights, predictive analysis, and chatbots for instant student support.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-aos="fade-right">
+          <div class="content">
+            <i class="fas fa-shield-alt icon"></i>
+            <h4>Security & Privacy</h4>
+            <p>Protect student data with encryption, role-based access, and compliance with data regulations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Preview Section -->
+  <section class="dashboard-preview-section py-5" style="background-color: #f5f7fa;">
+    <div class="container">
+      <h2 class="text-center mb-5"
+        style="font-family: 'Playfair Display', serif; font-weight: bold; font-size: 2.8rem; color: #2e3192;">
+        Live Dashboard Previews
+      </h2>
+
+      <div class="row align-items-center">
+        <!-- Student Image with Activity Box -->
+        <div class="col-lg-6 mb-4 mb-lg-0 position-relative">
+          <img src="/static/image/stdtsimges.jpeg" alt="Happy Students"
+            class="img-fluid rounded shadow-lg wow fadeInLeft"
+            style="border: 6px solid #ffffff; animation-delay: 0.2s;">
+
+          <div class="floating-box bg-white shadow position-absolute p-3 rounded"
+            style="bottom: -20px; right: -20px; width: 240px;">
+            <h6 class="text-primary fw-bold mb-2">Student Activity</h6>
+            <p class="mb-0 text-muted" style="font-size: 0.9rem;">
+              Attendance: 98%<br>
+              Homework: 95% Complete
+            </p>
+          </div>
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div class="col-lg-6">
+          <div class="dashboard-tabs">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin"
+                  type="button" role="tab">Admin</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="student-tab" data-bs-toggle="pill" data-bs-target="#student" type="button"
+                  role="tab">Student</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="teacher-tab" data-bs-toggle="pill" data-bs-target="#teacher" type="button"
+                  role="tab">Teacher</button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="admin" role="tabpanel">
+                <img src="https://dummyimage.com/600x350/2e3192/fff&text=Admin+Dashboard" alt="Admin Dashboard"
+                  class="img-fluid rounded shadow-sm">
+              </div>
+              <div class="tab-pane fade" id="student" role="tabpanel">
+                <img src="https://dummyimage.com/600x350/7c3aed/fff&text=Student+Dashboard" alt="Student Dashboard"
+                  class="img-fluid rounded shadow-sm">
+              </div>
+              <div class="tab-pane fade" id="teacher" role="tabpanel">
+                <img src="https://dummyimage.com/600x350/f59e0b/fff&text=Teacher+Dashboard" alt="Teacher Dashboard"
+                  class="img-fluid rounded shadow-sm">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reports & Analytics Section -->
+  <section class="reports-section" id="reports">
+    <div class="container">
+      <h2 class="section-title">Reports & Analytics</h2>
+      <p class="section-subtext">
+        Empower your institution with data-driven decisions through beautifully organized reports.
+      </p>
+
+      <div class="reports-grid">
+        <div class="report-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Academic Report">
+          <h5>Academic Reports</h5>
+          <p>Track grades, performance trends, and student progress over time with interactive graphs.</p>
+        </div>
+
+        <div class="report-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Attendance Report">
+          <h5>Attendance Analytics</h5>
+          <p>Generate real-time attendance stats and identify patterns with intuitive visuals.</p>
+        </div>
+
+        <div class="report-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/2721/2721096.png" alt="Financial Report">
+          <h5>Financial Reports</h5>
+          <p>Manage fees, payments, and dues efficiently using insightful financial summaries.</p>
+        </div>
+      </div>
+
+      <div class="reports-cta">
+        <a href="#demo-report" class="btn-report-demo">Download Sample Report</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Notifications Section -->
+  <section class="notifications-section" id="notifications">
+    <div class="container">
+      <h2 class="section-title">Smart Notifications & Alerts</h2>
+      <p class="section-subtitle">Stay informed with real-time updates across roles</p>
+
+      <div class="notification-grid">
+        <div class="notification-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h5>Instant Attendance Alerts</h5>
+          <p>Parents are notified instantly when their child is marked absent.</p>
+        </div>
+
+        <div class="notification-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+          <h5>Fee Reminders</h5>
+          <p>Automated SMS & emails sent before due dates to avoid late payments.</p>
+        </div>
+
+        <div class="notification-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-calendar-check"></i>
+          </div>
+          <h5>Schedule Changes</h5>
+          <p>Teachers and students get real-time updates on timetable changes.</p>
+        </div>
+
+        <div class="notification-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-bullhorn"></i>
+
+          </div>
+          <h5>Important Announcements</h5>
+          <p>Admins can broadcast messages via email, app, or dashboard pop-ups.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Success Stories Section -->
+  <section id="success-stories" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5" style="color: #2e3192;" data-aos="fade-up">🌟 Success Stories</h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <!-- Testimonial 1 -->
+          <div class="carousel-item active">
+            <div class="row justify-content-center">
+              <div class="col-md-8 text-center" data-aos="zoom-in">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-4 shadow"
+                  width="100" height="100" alt="Mrs. Asha Kulkarni">
+                <p class="fs-5 fst-italic">
+                  "Our school workflow has completely transformed. Managing attendance, timetables,
+                  and notices is now faster and more efficient than ever."
+                </p>
+                <h5 class="fw-bold" style="color: #2e3192;">
+                  <i class="fas fa-user-tie me-2"></i>Mrs. Asha Kulkarni
+                </h5>
+                <p class="text-muted">Vice Principal, Green Valley School</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-8 text-center" data-aos="zoom-in">
+                <img src="https://randomuser.me/api/portraits/men/36.jpg" class="rounded-circle mb-4 shadow" width="100"
+                  height="100" alt="Mr. Rajeev Tiwari">
+                <p class="fs-5 fst-italic">
+                  "With ERP, I can manage book inventory, student records, and overdue alerts with ease.
+                  It has made my daily work smooth and paperless."
+                </p>
+                <h5 class="fw-bold" style="color: #2e3192;">
+                  <i class="fas fa-book-reader me-2"></i>Mr. Rajeev Tiwari
+                </h5>
+                <p class="text-muted">Library Incharge, Sunrise Public School</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="carousel-item">
+            <div class="row justify-content-center">
+              <div class="col-md-8 text-center" data-aos="zoom-in">
+                <img src="https://randomuser.me/api/portraits/women/50.jpg" class="rounded-circle mb-4 shadow"
+                  width="100" height="100" alt="Ms. Shalini Mehra">
+                <p class="fs-5 fst-italic">
+                  "Admissions and student registration have never been easier. Everything is organized
+                  in one place with real-time status updates."
+                </p>
+                <h5 class="fw-bold" style="color: #2e3192;">
+                  <i class="fas fa-user-graduate me-2"></i>Ms. Shalini Mehra
+                </h5>
+                <p class="text-muted">Coordinator, St. Xavier's School</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-light pt-5 pb-4" style="background-color: #2e3192;" id="contact">
+    <div class="container">
+      <div class="row">
+        <!-- About Section -->
+        <div class="col-md-4 mb-4" data-aos="fade-right">
+          <div class="align-items-center mb-3">
+            <img src="/static/image/logo2.png" alt="RudhiCore Logo" class="footer-logo">
+
+            <h5 class="fw-bold mb-0 text-white">RudhiCore</h5>
+          </div>
+          <p>
+            Empowering institutions with centralized, role-based ERP to streamline
+            academic and administrative workflows.
+          </p>
+          <div class="social-icons mt-3">
+            <a href="#" class="text-light me-3" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-light me-3" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/Rudhisoft Private Limited" class="text-light me-3" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/rudhisoftpvtltd" class="text-light" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-4 mb-4" data-aos="fade-up">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#hero-section" class="text-light text-decoration-none d-block py-1">Home</a></li>
+            <li><a href="#core-features" class="text-light text-decoration-none d-block py-1">Core Features</a></li>
+            <li><a href="#success-stories" class="text-light text-decoration-none d-block py-1">Success Stories</a></li>
+            <li><a href="#reports" class="text-light text-decoration-none d-block py-1">Reports</a></li>
+            <li><a href="#notifications" class="text-light text-decoration-none d-block py-1">Notifications</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="col-md-4 mb-4" data-aos="fade-left">
+          <h5 class="fw-bold mb-3">Contact Us</h5>
+
+          <!-- Google Maps Link -->
+          <p>
+            <i class="fas fa-map-marker-alt me-2"></i>
+            <a href="https://www.google.com/maps/place/Rudhisoft+Private+Limited/@20.0089057,73.7284546,6932m/data=!3m1!1e3!4m10!1m2!2m1!1s:+13,+Maruti+Plaza,+Vidya+Vikas+Circle,+Gangapur+Rd,+Nashik,+Maharashtra+422005!3m6!1s0x3bddebe593b45277:0x78a8e1b3f866db1f!8m2!3d20.0089057!4d73.7665634!15sCk86IDEzLCBNYXJ1dGkgUGxhemEsIFZpZHlhIFZpa2FzIENpcmNsZSwgR2FuZ2FwdXIgUmQsIE5hc2hpaywgTWFoYXJhc2h0cmEgNDIyMDA1WkoiSDEzIG1hcnV0aSBwbGF6YSB2aWR5YSB2aWthcyBjaXJjbGUgZ2FuZ2FwdXIgcmQgbmFzaGlrIG1haGFyYXNodHJhIDQyMjAwNZIBEHNvZnR3YXJlX2NvbXBhbnmqAXkQASoGIgIxMygAMh8QASIb1htzr8O6r-b-If0k1mkBf5aqUq9t-PylYsTGMkwQAiJIMTMgbWFydXRpIHBsYXphIHZpZHlhIHZpa2FzIGNpcmNsZSBnYW5nYXB1ciByZCBuYXNoaWsgbWFoYXJhc2h0cmEgNDIyMDA14AEA!16s%2Fg%2F11x83zdx67?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank" style="text-decoration: none; color: inherit;">
+              vidya vikas Circle ,maruti plazza shop no 13
+            </a>
+          </p>
+
+          <!-- Mailto Link -->
+          <p>
+            <i class="fas fa-envelope me-2"></i>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support@rudhicore.com" target="_blank"
+              style="text-decoration: none; color: inherit;">
+              support@rudhicore.com
+            </a>
+          </p>
+          <!-- Telephone Link -->
+          <p>
+            <i class="fas fa-phone me-2"></i>
+            <a href="tel:+910000000000" style="text-decoration: none; color: inherit;">
+              +91 00000 000000
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center border-top pt-3 mt-4">
+        <small>&copy; 2025 RudhiCore. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Navbar scroll behavior
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('mainNavbar');
+      navbar.classList.toggle('sticky', window.scrollY > 20);
+    });
+
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+
+</html>
